@@ -1,0 +1,290 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.",
+        "version": "1.0.0",
+        "title": "SMSi API",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "apiteam@swagger.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "localhost:8080",
+    "basePath": "/api",
+    "tags": [
+        {
+            "name": "user",
+            "description": "Operations about user accounts",
+            "externalDocs": {
+                "description": "Find out more about our store",
+                "url": "http://swagger.io"
+            }
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Add a new user accounts",
+                "description": "Add a new user accounts",
+                "operationId": "addUser",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Pet object that needs to be added to the store",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request - Request does not have a valid format, all required parameters, etc."
+                    },
+                    "401": {
+                        "description": "Unauthorized Access - No currently valid authorization has been made."
+                    },
+                    "403": {
+                        "description": "Forbidden Access - Access to this service or resource is forbidden with the given authorization."
+                    },
+                    "404": {
+                        "description": "Not Found - Service or resource was not found"
+                    },
+                    "500": {
+                        "description": "System Error - Specific reason is included in the error message"
+                    },
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Get all user accounts",
+                "description": "Get all user accounts",
+                "operationId": "getAllUsers",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request - Request does not have a valid format, all required parameters, etc."
+                    },
+                    "401": {
+                        "description": "Unauthorized Access - No currently valid authorization has been made."
+                    },
+                    "403": {
+                        "description": "Forbidden Access - Access to this service or resource is forbidden with the given authorization."
+                    },
+                    "404": {
+                        "description": "Not Found - Service or resource was not found"
+                    },
+                    "500": {
+                        "description": "System Error - Specific reason is included in the error message"
+                    },
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/users/{user_id}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Find user by ID",
+                "description": "Returns a single user",
+                "operationId": "getUserById",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "ID of user to return",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request - Request does not have a valid format, all required parameters, etc."
+                    },
+                    "401": {
+                        "description": "Unauthorized Access - No currently valid authorization has been made."
+                    },
+                    "403": {
+                        "description": "Forbidden Access - Access to this service or resource is forbidden with the given authorization."
+                    },
+                    "404": {
+                        "description": "Not Found - Service or resource was not found"
+                    },
+                    "500": {
+                        "description": "System Error - Specific reason is included in the error message"
+                    },
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Updates a user account",
+                "description": "Updates a user account",
+                "operationId": "updateUserAccount",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "ID of user that needs to be updated",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Pet object that needs to be added to the store",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request - Request does not have a valid format, all required parameters, etc."
+                    },
+                    "401": {
+                        "description": "Unauthorized Access - No currently valid authorization has been made."
+                    },
+                    "403": {
+                        "description": "Forbidden Access - Access to this service or resource is forbidden with the given authorization."
+                    },
+                    "404": {
+                        "description": "Not Found - Service or resource was not found"
+                    },
+                    "500": {
+                        "description": "System Error - Specific reason is included in the error message"
+                    },
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Delete user by ID",
+                "description": "Delete a single user",
+                "operationId": "deleteUserById",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "ID of user to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request - Request does not have a valid format, all required parameters, etc."
+                    },
+                    "401": {
+                        "description": "Unauthorized Access - No currently valid authorization has been made."
+                    },
+                    "403": {
+                        "description": "Forbidden Access - Access to this service or resource is forbidden with the given authorization."
+                    },
+                    "404": {
+                        "description": "Not Found - Service or resource was not found"
+                    },
+                    "500": {
+                        "description": "System Error - Specific reason is included in the error message"
+                    },
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "petstore_auth": {
+            "type": "oauth2",
+            "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+            "flow": "implicit",
+            "scopes": {
+                "write:pets": "modify pets in your account",
+                "read:pets": "read your pets"
+            }
+        },
+        "api_key": {
+            "type": "apiKey",
+            "name": "api_key",
+            "in": "header"
+        }
+    },
+    "definitions": {
+        "User": {
+            "type": "object",
+            "properties": {
+                "username": {
+                    "type": "string"
+                },
+                "firstname": {
+                    "type": "string"
+                },
+                "lastname": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "externalDocs": {
+        "description": "Find out more about Swagger",
+        "url": "http://swagger.io"
+    }
+}
